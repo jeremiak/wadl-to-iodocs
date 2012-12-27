@@ -31,14 +31,12 @@ def params_to_json(params):
 
 def method_to_json(method):
     wadl_url = method.findAll('apigee:example')[0]['url']
-    print wadl_url
     uri = wadl_to_rails_syntax(wadl_url)
-    print uri
     j = {
             'MethodName': method['apigee:displayname'],
             'Synopsis': method.doc.text,
             'HTTPMethod': method['name'],
-            'URI': uri,
+            'URI': '/%s' % uri,
             'RequiresOAuth': 'N',
             'parameters': [],
         }
