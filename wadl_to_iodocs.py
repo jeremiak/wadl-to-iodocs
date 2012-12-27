@@ -36,7 +36,7 @@ def method_to_json(method):
             'MethodName': method['apigee:displayname'],
             'Synopsis': method.doc.text,
             'HTTPMethod': method['name'],
-            'URI': '/%s' % uri,
+            'URI': uri,
             'RequiresOAuth': 'N',
             'parameters': [],
         }
