@@ -9,8 +9,6 @@ def wadl_to_rails_syntax(url):
     url = re.sub(r'{', r':', url)
     url = re.sub(r'}', r'', url)
     
-    print url
-    
     return url
 
 def params_to_json(params):
@@ -42,11 +40,8 @@ def method_to_json(method):
             'parameters': [],
         }
 
-    print method.request
     params = method.request.findAll('param')
     
-    print len(params)
-
     p = params_to_json(params)
     j['parameters'] = p
 
@@ -56,15 +51,10 @@ if __name__=='__main__':
     wf = sys.argv[1]
     jf = sys.argv[2]
     
-    print wf
-    print jf
-    
     wadl_file = open('%s' % wf)
     json_file = open('%s' % jf, 'w+')
 
     soup = BeautifulSoup(wadl_file.read())
-
-    print soup
 
     resources = soup.findAll('resource')
 
